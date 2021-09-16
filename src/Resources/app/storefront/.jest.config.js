@@ -2,7 +2,7 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-    'rootDir': './',
+    'rootDir': '.',
     'verbose': true,
     'moduleFileExtensions': [
         'js'
@@ -11,9 +11,9 @@ module.exports = {
         ".*.js": "<rootDir>/node_modules/babel-jest",
     },
     "transformIgnorePatterns": [
-        "node_modules/(?!variables/.*)"
+        "node_modules/(?!variables/.*)",
     ],
     "testMatch": [
-        "<rootDir>/tests/Jest/**/*.spec.js"
+        "<rootDir>/tests/**/*.spec.js"
     ]
 };

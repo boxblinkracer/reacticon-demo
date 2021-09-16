@@ -19,13 +19,15 @@ export default class CaptchaPlugin extends Plugin {
      */
     init() {
 
+        console.log('Init Google Recaptcha');
+
+        this._siteKey = this.options.sitekey;
+
         let captchaForms = document.querySelectorAll('.captcha-form');
 
         if (captchaForms.length <= 0) {
             return;
         }
-
-        this._siteKey = window.recaptcha.sitekey;
 
         const me = this;
 

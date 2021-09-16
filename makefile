@@ -12,11 +12,15 @@ help:
 
 prod: ## Installs all production dependencies
 	composer install --no-dev
-	npm install --production
+	cd src/Resources/app/storefront && npm install --production
 
 dev: ## Installs all dev dependencies
 	composer install
-	npm install
+	cd src/Resources/app/storefront && npm install
+
+clean: ## Cleans all dependencies
+	rm -rf vendor
+	rm -rf src/Resources/app/storefront/node_modules
 
 build: ## Build
 	cd /var/www/html && php bin/console theme:dump
@@ -40,4 +44,4 @@ phpunit: ## Starts all PHPUnit Tests
 	php ./vendor/bin/phpunit --configuration=./phpunit.xml
 
 jest: ## Starts all Jest tests
-	./node_modules/.bin/jest --config=./.jest.config.js
+	cd ./src/Resources/app/storefront && ./node_modules/.bin/jest --config=.jest.config.js

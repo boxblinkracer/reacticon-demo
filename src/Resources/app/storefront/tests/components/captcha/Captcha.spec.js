@@ -1,4 +1,4 @@
-import {Captcha} from "../../../../src/Resources/app/storefront/src/js/components/Captcha";
+import {Captcha} from "../../../src/js/components/Captcha";
 import {FakeGoogleRecaptcha} from '../../fakes/FakeGoogleRecaptcha';
 
 

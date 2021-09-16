@@ -1,0 +1,6 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_main %}
+    <div id="google_recaptcha_plugin" data-captcha-plugin-options="{{ { sitekey: 'abc' } | json_encode }}"></div>
+    {{ parent() }}
+{% endblock %}

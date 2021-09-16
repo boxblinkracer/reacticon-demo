@@ -4,6 +4,6 @@ namespace GoogleRecaptcha;
 
 use Shopware\Core\Framework\Plugin;
 
-class GoogleRecaptcha extends Plugin
+class GoogleRecaptchaPlugin extends Plugin
 {
 }

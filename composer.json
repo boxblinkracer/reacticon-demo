@@ -4,7 +4,7 @@
     "type": "shopware-platform-plugin",
     "license": "MIT",
     "extra": {
-        "shopware-plugin-class": "GoogleRecaptcha\\GoogleRecaptcha",
+        "shopware-plugin-class": "GoogleRecaptcha\\GoogleRecaptchaPlugin",
         "author": "dasistweb",
         "label": {
             "de-DE": "Google Recaptcha Demo Plugin",
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DemoPlugin\\": "src/"
+            "GoogleRecaptcha\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DemoPlugin\\Tests\\": "tests/PHPUnit"
+            "GoogleRecaptcha\\Tests\\": "tests/PHPUnit"
         }
     },
     "scripts": {
