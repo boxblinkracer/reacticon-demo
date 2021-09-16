@@ -21,13 +21,13 @@ export default class CaptchaPlugin extends Plugin {
 
         console.log('Init Google Recaptcha');
 
-        this._siteKey = this.options.sitekey;
-
         let captchaForms = document.querySelectorAll('.captcha-form');
 
         if (captchaForms.length <= 0) {
             return;
         }
+
+        this._siteKey = this.options.sitekey;
 
         const me = this;
 

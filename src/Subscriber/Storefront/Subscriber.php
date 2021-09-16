@@ -24,10 +24,10 @@ class Subscriber implements EventSubscriberInterface
     public function onStorefrontRender(StorefrontRenderEvent $event)
     {
         $data = [
-            'dockware' => 1,
+            'sitekey' => '123',
         ];
 
-        $event->setParameter('dockware', $data);
+        $event->setParameter('captcha', $data);
     }
 
 }
