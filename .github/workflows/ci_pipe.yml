@@ -84,7 +84,7 @@ jobs:
       - name: Install Dependencies
         run: make dev -B
 
-      - name: Run PHPUnit
+      - name: Run Jest
         run: make jest -B
 
   phpstan:
