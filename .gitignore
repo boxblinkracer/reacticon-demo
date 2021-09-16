@@ -1,0 +1,6 @@
+/node_modules
+.DS_Store
+/src/Resources/app/storefront/dist
+/.idea
+/src/.DS_Store
+/vendor

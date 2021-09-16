@@ -1,0 +1,44 @@
+{
+    "name": "dasistweb/google-recaptcha",
+    "description": "Google Recaptcha DEMO Plugin",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "extra": {
+        "shopware-plugin-class": "GoogleRecaptcha\\GoogleRecaptcha",
+        "author": "dasistweb",
+        "label": {
+            "de-DE": "Google Recaptcha Demo Plugin",
+            "en-GB": "Google Recaptcha Demo Plugin"
+        }
+    },
+    "require": {
+        "php": ">= 7.4"
+    },
+    "require-dev": {
+        "shopware/core": "*",
+        "shopware/storefront": "*",
+        "phpunit/phpunit": "~8.3.4",
+        "phpstan/phpstan": "^0.12.18",
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "DemoPlugin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DemoPlugin\\Tests\\": "tests/PHPUnit"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "[ ! -f vendor/bin/phpcs ] || vendor/bin/phpcs --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+        ],
+        "post-update-cmd": [
+            "[ ! -f vendor/bin/phpcs ] || vendor/bin/phpcs --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+        ]
+    }
+}

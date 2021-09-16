@@ -1,0 +1,15 @@
+version: "3.0"
+
+
+services:
+
+  shopware:
+    container_name: shop
+    image: dockware/dev:6.4.4.1
+    ports:
+      - "80:80"
+      - "22:22"
+    volumes:
+      - "./:/var/www/html/custom/plugins/GoogleRecaptcha"
+    environment:
+      - PHP_VERSION=7.4
