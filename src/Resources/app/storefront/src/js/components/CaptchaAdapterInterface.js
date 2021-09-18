@@ -1,9 +1,7 @@
-// @flow
-
 /**
  *
  */
-export interface CaptchaAdapterInterface
+export class CaptchaAdapterInterface
 {
 
     /**
@@ -11,6 +9,9 @@ export interface CaptchaAdapterInterface
      * action key and returns it as simple string.
      * @param {string} actionKey
      */
-    requestToken(actionKey);
+    requestToken(actionKey)
+    {
+
+    }
 
 }

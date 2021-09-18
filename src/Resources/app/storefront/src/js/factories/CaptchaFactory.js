@@ -1,5 +1,6 @@
 import {NullCaptchaAdapter} from "../components/adapter/NullCaptchaAdapter";
 import {GoogleRecaptcha3Adapter} from "../components/adapter/GoogleRecaptcha3Adapter";
+import {Captcha} from "../components/Captcha";
 
 /**
  *

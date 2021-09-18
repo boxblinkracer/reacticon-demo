@@ -21,9 +21,9 @@ export default class CaptchaPlugin extends Plugin {
 
         console.log('Init Google Recaptcha');
 
-        let captchaForms = document.querySelectorAll('.captcha-form');
+        let captchaTokenInputs = document.querySelectorAll('.captcha-form-token');
 
-        if (captchaForms.length <= 0) {
+        if (captchaTokenInputs.length <= 0) {
             return;
         }
 
@@ -31,12 +31,11 @@ export default class CaptchaPlugin extends Plugin {
 
         const me = this;
 
-        captchaForms.forEach(function (form) {
+        captchaTokenInputs.forEach(function (inputTextField) {
 
-            const actionKey = DomAccess.getDataAttribute(form, 'data-captcha-action');
-            const inputFieldClass = DomAccess.getDataAttribute(form, 'data-captcha-input');
+            const actionKey = DomAccess.getDataAttribute(inputTextField, 'data-captcha-action');
 
-            me._prepareCaptcha(actionKey, inputFieldClass);
+            me._prepareCaptcha(actionKey, inputTextField);
         });
     }
 
@@ -45,18 +44,15 @@ export default class CaptchaPlugin extends Plugin {
      * Creates a new captcha for the provided
      * action and input element
      *
-     * @param {string }actionKey
-     * @param {string} inputClass
+     * @param {string} actionKey
+     * @param {string} inputTextField
      * @private
      */
-    _prepareCaptcha(actionKey, inputClass) {
+    _prepareCaptcha(actionKey, inputTextField) {
 
         const processToken = (token) => {
-
-            const field = this._document.getElementsByClassName(inputClass)[0];
-
-            if (field instanceof HTMLInputElement) {
-                field.value = token;
+            if (inputTextField instanceof HTMLInputElement) {
+                inputTextField.value = token;
             }
         };
 

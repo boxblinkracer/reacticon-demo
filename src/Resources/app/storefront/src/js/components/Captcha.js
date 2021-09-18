@@ -1,4 +1,4 @@
-import type {CaptchaAdapterInterface} from './CaptchaAdapterInterface';
+import { CaptchaAdapterInterface } from './CaptchaAdapterInterface';
 
 
 /**

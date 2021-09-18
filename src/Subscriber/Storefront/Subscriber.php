@@ -2,11 +2,27 @@
 
 namespace GoogleRecaptcha\Subscriber\Storefront;
 
+use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Event\StorefrontRenderEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class Subscriber implements EventSubscriberInterface
 {
+
+    /**
+     * @var SystemConfigService
+     */
+    private $systemConfigService;
+
+
+    /**
+     * @param SystemConfigService $systemConfigService
+     */
+    public function __construct(SystemConfigService $systemConfigService)
+    {
+        $this->systemConfigService = $systemConfigService;
+    }
+
 
     /**
      * @inheritDoc
@@ -18,13 +34,16 @@ class Subscriber implements EventSubscriberInterface
         ];
     }
 
+
     /**
      * @param StorefrontRenderEvent $event
      */
     public function onStorefrontRender(StorefrontRenderEvent $event)
     {
+        $siteKey = $this->systemConfigService->get('GoogleRecaptchaPlugin.config.siteKey');
+
         $data = [
-            'sitekey' => '123',
+            'sitekey' => $siteKey,
         ];
 
         $event->setParameter('captcha', $data);

@@ -9,5 +9,10 @@
             <label>Site Key</label>
             <copyable>true</copyable>
         </input-field>
+        <input-field type="password">
+            <name>secretKey</name>
+            <label>Secret Key</label>
+            <copyable>true</copyable>
+        </input-field>
     </card>
 </config>

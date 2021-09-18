@@ -7,8 +7,13 @@
     <services>
 
         <service id="GoogleRecaptcha\Subscriber\Storefront\Subscriber" class="GoogleRecaptcha\Subscriber\Storefront\Subscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
             <tag name="kernel.event_subscriber"/>
         </service>
-        
+
+        <service id="GoogleRecaptcha\Validators\NewsletterFormValidator" decorates="Shopware\Core\Framework\Validation\DataValidator">
+            <argument type="service" id="GoogleRecaptcha\Validators\NewsletterFormValidator.inner"/>
+        </service>
+
     </services>
 </container>
