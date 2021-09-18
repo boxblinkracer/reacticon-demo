@@ -19,8 +19,10 @@ dev: ## Installs all dev dependencies
 	cd src/Resources/app/storefront && npm install
 
 clean: ## Cleans all dependencies
-	rm -rf vendor
-	rm -rf src/Resources/app/storefront/node_modules
+	rm -rf ./vendor
+	rm -rf ./composer.lock
+	rm -rf ./src/Resources/app/storefront/node_modules
+	rm -rf ./src/Resources/app/storefront/package-lock.json
 
 build: ## Build
 	cd /var/www/html && php bin/console theme:dump
