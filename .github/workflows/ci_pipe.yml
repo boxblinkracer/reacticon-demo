@@ -10,6 +10,8 @@ on:
 
 jobs:
 
+  # ------------------------------------------------------------------------------------------------------------------------
+
   php_checks:
     name: PHP Syntax Checks
     runs-on: ubuntu-latest
@@ -108,9 +110,10 @@ jobs:
       - name: Run PHP CS Fixer
         run: make csfix -B
 
+  # ------------------------------------------------------------------------------------------------------------------------
+
   jest:
     name: Jest Unit Tests
-    needs: phpcsfixer
     runs-on: ubuntu-latest
     steps:
       - name: Clone Code
@@ -129,7 +132,7 @@ jobs:
 
   eslint:
     name: ESLint
-    needs: phpunit
+    needs: jest
     runs-on: ubuntu-latest
     steps:
       - name: Clone Code
@@ -145,7 +148,7 @@ jobs:
 
   e2e:
     name: E2E Tests | Shopware ${{ matrix.shopware }}
-    needs: eslint
+    needs: phpcsfixer
     runs-on: ubuntu-latest
     strategy:
       matrix:
