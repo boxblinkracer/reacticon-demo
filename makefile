@@ -45,3 +45,6 @@ phpunit: ## Starts all PHPUnit Tests
 
 jest: ## Starts all Jest tests
 	cd ./src/Resources/app/storefront && ./node_modules/.bin/jest --config=.jest.config.js
+
+eslint: ## Starts the ESLint
+	cd ./src/Resources/app/storefront && ./node_modules/eslint/bin/eslint.js --config ../../../../vendor/shopware/storefront/Resources/app/storefront/.eslintrc.js ./src

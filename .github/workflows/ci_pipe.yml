@@ -68,28 +68,9 @@ jobs:
       - name: Run PHPUnit
         run: make phpunit -B
 
-  jest:
-    name: Jest Unit Tests
-    needs: phpunit
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clone Code
-        uses: actions/checkout@v2
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 7.4
-
-      - name: Install Dependencies
-        run: make dev -B
-
-      - name: Run Jest
-        run: make jest -B
-
   phpstan:
     name: Static Analyzers
-    needs: jest
+    needs: phpunit
     runs-on: ubuntu-latest
     steps:
 
@@ -127,11 +108,44 @@ jobs:
       - name: Run PHP CS Fixer
         run: make csfix -B
 
+  jest:
+    name: Jest Unit Tests
+    needs: phpcsfixer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - name: Install Dependencies
+        run: make dev -B
+
+      - name: Run Jest
+        run: make jest -B
+
+  eslint:
+    name: ESLint
+    needs: phpunit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: make dev -B
+
+      - name: Run ESLint
+        run: make eslint -B
+
   # ------------------------------------------------------------------------------------------------------------------------
 
   e2e:
     name: E2E Tests | Shopware ${{ matrix.shopware }}
-    needs: phpcsfixer
+    needs: eslint
     runs-on: ubuntu-latest
     strategy:
       matrix:
