@@ -26,7 +26,7 @@ jobs:
         run: make phpcheck -B
 
   php_min:
-    name: PHP 7.2 Compatibility
+    name: PHP 7.4 Compatibility
     needs: php_checks
     runs-on: ubuntu-latest
     steps:
