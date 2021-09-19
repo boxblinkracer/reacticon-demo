@@ -153,7 +153,6 @@ jobs:
 
   e2e:
     name: E2E Tests | Shopware ${{ matrix.shopware }}
-    needs: phpcsfixer
     runs-on: ubuntu-latest
     strategy:
       matrix:

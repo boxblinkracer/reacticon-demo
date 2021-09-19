@@ -1,4 +1,4 @@
-import { CaptchaAdapterInterface } from './CaptchaAdapterInterface';
+//import {CaptchaAdapterInterface} from './CaptchaAdapterInterface';
 
 
 /**
@@ -47,10 +47,10 @@ export class Captcha {
 
         // auto refresh, every configured seconds
         this._intervalId = setInterval(async () => {
-                const token = await this._adapter.requestToken(actionKey);
-                callback(token);
-            },
-            this._refreshSeconds * 1000
+            const token = await this._adapter.requestToken(actionKey);
+            callback(token);
+        },
+        this._refreshSeconds * 1000
         );
     }
 

@@ -1,6 +1,6 @@
 import Plugin from 'src/plugin-system/plugin.class';
 import DomAccess from 'src/helper/dom-access.helper';
-import {CaptchaFactory} from "../factories/CaptchaFactory";
+import {CaptchaFactory} from '../factories/CaptchaFactory';
 
 
 /**
@@ -19,9 +19,7 @@ export default class CaptchaPlugin extends Plugin {
      */
     init() {
 
-        console.log('Init Google Recaptcha');
-
-        let captchaTokenInputs = document.querySelectorAll('.captcha-form-token');
+        const captchaTokenInputs = document.querySelectorAll('.captcha-form-token');
 
         if (captchaTokenInputs.length <= 0) {
             return;
