@@ -71,7 +71,7 @@ jobs:
         run: make phpunit -B
 
   phpstan:
-    name: Static Analyzers
+    name: PHPStan
     needs: phpunit
     runs-on: ubuntu-latest
     steps:

@@ -6,3 +6,4 @@ parameters:
     	- %rootDir%/../../../src
     excludes_analyse:
         - %rootDir%/../../../vendor/*
+        - %rootDir%/../../../src/Resources/*

@@ -85,7 +85,7 @@ jobs:
         run: make jest -B
 
   phpstan:
-    name: Static Analyzers
+    name: PHPStan
     needs: jest
     runs-on: ubuntu-latest
     steps:
