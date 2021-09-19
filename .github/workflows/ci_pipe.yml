@@ -49,12 +49,9 @@ jobs:
   # ------------------------------------------------------------------------------------------------------------------------
 
   phpunit:
-    name: PHP Unit Tests | PHP ${{ matrix.php }}
+    name: PHPUnit Tests
     needs: php_min
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php: [ '7.4' ]
     steps:
       - name: Clone Code
         uses: actions/checkout@v2
@@ -62,7 +59,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 7.4
 
       - name: Install Dependencies
         run: make dev -B
@@ -113,7 +110,7 @@ jobs:
   # ------------------------------------------------------------------------------------------------------------------------
 
   jest:
-    name: Jest Unit Tests
+    name: Jest Tests
     runs-on: ubuntu-latest
     steps:
       - name: Clone Code
