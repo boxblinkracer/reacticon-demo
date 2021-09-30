@@ -50,3 +50,6 @@ jest: ## Starts all Jest tests
 
 eslint: ## Starts the ESLint
 	cd ./src/Resources/app/storefront && ./node_modules/eslint/bin/eslint.js --config ./.eslintrc.json ./src
+
+stylelint: ## Starts the Stylelinter
+	cd ./src/Resources/app/storefront && ./node_modules/.bin/stylelint ./src/scss/**/*.scss

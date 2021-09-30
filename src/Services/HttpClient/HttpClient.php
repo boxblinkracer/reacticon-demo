@@ -22,10 +22,10 @@ class HttpClient
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($ch, CURLOPT_POST, 1);
 
-        $this->client->setOption(CURLOPT_HTTPHEADER, $headers);
+       curl_setopt($ch,CURLOPT_HTTPHEADER, $headers);
 
-        $this->client->setOption(CURLOPT_CUSTOMREQUEST, 'POST');
-        $this->client->setOption(CURLOPT_POSTFIELDS, $content);
+       curl_setopt($ch,CURLOPT_CUSTOMREQUEST, 'POST');
+       curl_setopt($ch,CURLOPT_POSTFIELDS, $content);
 
 
         $response = curl_exec($ch);
