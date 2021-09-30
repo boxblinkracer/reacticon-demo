@@ -4,12 +4,10 @@
             "@babel/preset-env",
             {
                 "modules": "auto"
-            },
-            "@babel/preset-flow"
+            }
         ]
     ],
     "plugins": [
-        "@babel/plugin-transform-flow-strip-types",
         "@babel/transform-runtime"
     ]
 }
