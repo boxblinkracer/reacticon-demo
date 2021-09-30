@@ -13,6 +13,7 @@
 
         <service id="GoogleRecaptcha\Storefront\RegisterRoute" decorates="Shopware\Core\Checkout\Customer\SalesChannel\RegisterRoute">
             <argument type="service" id="GoogleRecaptcha\Storefront\RegisterRoute.inner"/>
+            <argument type="service" id="session.flash_bag"/>
         </service>
 
     </services>
