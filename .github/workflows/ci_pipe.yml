@@ -169,7 +169,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        shopware: [ '6.4.4.0' ]
+        shopware: [ '6.4.4.1' ]
     steps:
 
       - name: Clone Code
@@ -191,7 +191,7 @@ jobs:
 
       - name: Upload into Docker
         run: |
-          docker cp $(pwd)/. shop:/var/www/html/custom/plugins/DemoPlugin
+          docker cp $(pwd)/. shop:/var/www/html/custom/plugins/GoogleRecaptchaPlugin
           docker exec shop bash -c 'sudo chown www-data:www-data /var/www/html/custom/plugins -R'
 
       - name: Install Plugin
@@ -201,10 +201,7 @@ jobs:
 
       - name: Build artifacts
         run: |
-          docker exec shop bash -c './bin/build-js.sh'
-          docker exec shop bash -c 'php bin/console theme:refresh'
-          docker exec shop bash -c 'php bin/console theme:compile'
-          docker exec shop bash -c 'php bin/console theme:refresh'
+          docker exec shop bash -c 'cd /var/www/html/custom/plugins/GoogleRecaptchaPlugin && make build -B'
 
       - name: Reinstall Plugin
         run: |
