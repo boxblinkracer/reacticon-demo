@@ -2,12 +2,15 @@
 
 namespace GoogleRecaptcha\Storefront;
 
+use GoogleRecaptcha\Components\GoogleRecaptcha\GoogleRecaptcha;
+use GoogleRecaptcha\Services\HttpClient\HttpClient;
 use Shopware\Core\Checkout\Customer\SalesChannel\AbstractRegisterRoute;
 use Shopware\Core\Checkout\Customer\SalesChannel\CustomerResponse;
 use Shopware\Core\Framework\Validation\DataBag\RequestDataBag;
 use Shopware\Core\Framework\Validation\DataValidationDefinition;
 use Shopware\Core\Framework\Validation\Exception\ConstraintViolationException;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
+use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
@@ -23,6 +26,11 @@ class RegisterRoute extends AbstractRegisterRoute
     private $decorated;
 
     /**
+     * @var GoogleRecaptcha
+     */
+    private $captcha;
+
+    /**
      * @var FlashBagInterface
      */
     private $flashBag;
@@ -30,12 +38,15 @@ class RegisterRoute extends AbstractRegisterRoute
 
     /**
      * @param AbstractRegisterRoute $decorated
+     * @param SystemConfigService $config
      * @param FlashBagInterface $flashBag
      */
-    public function __construct(AbstractRegisterRoute $decorated, FlashBagInterface $flashBag)
+    public function __construct(AbstractRegisterRoute $decorated, SystemConfigService $config, FlashBagInterface $flashBag)
     {
         $this->decorated = $decorated;
         $this->flashBag = $flashBag;
+
+        $this->captcha = $this->buildCaptcha($config);
     }
 
 
@@ -59,19 +70,26 @@ class RegisterRoute extends AbstractRegisterRoute
         $action = $data->get('captcha_action');
         $token = $data->get('captcha_token');
 
-        $params = $data->all();
 
-        if ($action !== self::CAPTCHA_ACTION) {
-            $this->throwError('Captcha validation failed! Invalid action used for this form!', $params);
+        if (!$this->captcha->verifyToken($action, $token)) {
+            $this->throwError('Captcha validation failed! Are you a bot?', $data->all());
         }
 
-        if ($token !== 'abc') {
-            $this->throwError('Captcha validation failed! Are you a bot?', $params);
-        }
-
+        # continue with original registration
         return $this->decorated->register($data, $context, $validateStorefrontUrl, $additionalValidationDefinitions);
     }
 
+    /**
+     * @param SystemConfigService $config
+     * @return GoogleRecaptcha
+     */
+    private function buildCaptcha(SystemConfigService $config): GoogleRecaptcha
+    {
+        $siteKey = (string)$config->get('GoogleRecaptchaPlugin.config.siteKey');
+        $secret = (string)$config->get('GoogleRecaptchaPlugin.config.secretKey');
+
+        return new GoogleRecaptcha($siteKey, $secret, 0.5, new HttpClient());
+    }
 
     /**
      * @param string $message
