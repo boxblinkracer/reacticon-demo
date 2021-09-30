@@ -70,14 +70,14 @@ class GoogleRecaptcha
             return false;
         }
 
-        $data = array(
+        $data = [
             'secret' => $this->secretKey,
             'response' => $token
-        );
+        ];
 
-        $headers = array(
+        $headers = [
             "Content-type" => "application/x-www-form-urlencoded",
-        );
+        ];
 
 
         $response = $this->client->post($this->verificationURL, $headers, http_build_query($data));
