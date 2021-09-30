@@ -1,4 +1,3 @@
-//import {CaptchaAdapterInterface} from './CaptchaAdapterInterface';
 
 
 /**

@@ -1,10 +1,8 @@
-import type {CaptchaAdapterInterface} from "../../../../src/Resources/app/storefront/src/js/components/CaptchaAdapterInterface";
-
 
 /**
  *
  */
-export class FakeGoogleRecaptcha implements CaptchaAdapterInterface {
+export class FakeGoogleRecaptcha {
 
     token;
     passedAction;

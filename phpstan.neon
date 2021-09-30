@@ -3,5 +3,7 @@ parameters:
     paths:
         - ./src
     excludes_analyse:
-        - ./src/Resources
+        - ./src/Resources/*
+        - ./node_modules/*
+        - ./vendor/*
 
