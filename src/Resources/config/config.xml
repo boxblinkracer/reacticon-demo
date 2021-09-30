@@ -2,9 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
-        <title>Settings</title>
-        <title lang="de-DE">Einstellungen</title>
-        <input-field type="password">
+        <title>Keys</title>
+        <input-field type="text">
             <name>siteKey</name>
             <label>Site Key</label>
             <copyable>true</copyable>
@@ -15,4 +14,14 @@
             <copyable>true</copyable>
         </input-field>
     </card>
+
+    <card>
+        <title>Registration</title>
+        <input-field type="float">
+            <name>registerMinScore</name>
+            <label>Minimum Score</label>
+            <defaultValue>0.5</defaultValue>
+        </input-field>
+    </card>
+
 </config>

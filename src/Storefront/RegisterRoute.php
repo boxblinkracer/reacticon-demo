@@ -87,8 +87,9 @@ class RegisterRoute extends AbstractRegisterRoute
     {
         $siteKey = (string)$config->get('GoogleRecaptchaPlugin.config.siteKey');
         $secret = (string)$config->get('GoogleRecaptchaPlugin.config.secretKey');
+        $minScore = (float)$config->get('GoogleRecaptchaPlugin.config.registerMinScore');
 
-        return new GoogleRecaptcha($siteKey, $secret, 0.5, new HttpClient());
+        return new GoogleRecaptcha($siteKey, $secret, $minScore, new HttpClient());
     }
 
     /**
