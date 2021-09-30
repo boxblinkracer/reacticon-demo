@@ -10,7 +10,7 @@ class HttpClient
      * @param string $url
      * @param array $headers
      * @param string $content
-     * @return bool|string
+     * @return HttpResponse
      */
     public function post(string $url, array $headers, string $content): HttpResponse
     {

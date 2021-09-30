@@ -1,9 +1,7 @@
 parameters:
     level: 5
-    autoload_files:
-        - %rootDir%/../../../vendor/autoload.php
-    autoload_directories:
-    	- %rootDir%/../../../src
+    paths:
+        - ./src
     excludes_analyse:
-        - %rootDir%/../../../vendor/*
-        - %rootDir%/../../../src/Resources/*
+        - ./src/Resources
+
