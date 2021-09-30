@@ -1,0 +1,6 @@
+{% sw_extends '@Storefront/storefront/component/account/register.html.twig' %}
+
+{% block component_account_register_captcha %}
+    <input type="hidden" name="captcha_action" value="register">
+    <input type="hidden" name="captcha_token" class="captcha-form-token" data-captcha-action="register">
+{% endblock %}

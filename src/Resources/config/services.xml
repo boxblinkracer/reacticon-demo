@@ -11,8 +11,8 @@
             <tag name="kernel.event_subscriber"/>
         </service>
 
-        <service id="GoogleRecaptcha\Validators\NewsletterFormValidator" decorates="Shopware\Core\Framework\Validation\DataValidator">
-            <argument type="service" id="GoogleRecaptcha\Validators\NewsletterFormValidator.inner"/>
+        <service id="GoogleRecaptcha\Storefront\RegisterRoute" decorates="Shopware\Core\Checkout\Customer\SalesChannel\RegisterRoute">
+            <argument type="service" id="GoogleRecaptcha\Storefront\RegisterRoute.inner"/>
         </service>
 
     </services>
