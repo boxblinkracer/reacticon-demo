@@ -61,7 +61,7 @@ class RegisterRoute extends AbstractRegisterRoute
             $this->throwError('Invalid Token', $params);
         }
 
-        $this->decorated->register($data, $context, $validateStorefrontUrl, $additionalValidationDefinitions);
+        return $this->decorated->register($data, $context, $validateStorefrontUrl, $additionalValidationDefinitions);
     }
 
 
