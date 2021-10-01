@@ -24,4 +24,12 @@
         </input-field>
     </card>
 
+    <card>
+        <title>CSS Animations</title>
+        <input-field type="bool">
+            <name>cssAnimations</name>
+            <label>Animate</label>
+        </input-field>
+    </card>
+
 </config>

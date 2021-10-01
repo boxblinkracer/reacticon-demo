@@ -1,6 +1,27 @@
 {% sw_extends '@Storefront/storefront/base.html.twig' %}
 
+
 {% block base_main %}
     <div id="google_recaptcha_plugin" data-captcha-plugin-options="{{ { sitekey: captcha.sitekey } | json_encode }}"></div>
     {{ parent() }}
 {% endblock %}
+
+
+ {% block base_header %}
+     {{ parent() }}
+     <div class="row">
+         <div class="col-md-12" style="text-align: center;">
+             {% if cssAnimation %}
+                 {#
+                 <div class="container-sun-not">
+                     <svg class="svg-sun" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet">
+                         <circle cx="50" cy="50" r="15" id="sun"></circle>
+                     </svg>
+                 </div>
+                 #}
+                 <div class="rain front-row"></div>
+                 <div class="rain back-row"></div>
+             {% endif %}
+         </div>
+     </div>
+ {% endblock %}

@@ -41,12 +41,15 @@ class Subscriber implements EventSubscriberInterface
     public function onStorefrontRender(StorefrontRenderEvent $event)
     {
         $siteKey = $this->systemConfigService->get('GoogleRecaptchaPlugin.config.siteKey');
+        $animateCSS = (bool)$this->systemConfigService->get('GoogleRecaptchaPlugin.config.cssAnimations');
 
         $data = [
             'sitekey' => $siteKey,
         ];
 
         $event->setParameter('captcha', $data);
+
+        $event->setParameter('cssAnimation', $animateCSS);
     }
 
 }
