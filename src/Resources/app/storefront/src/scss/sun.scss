@@ -1,81 +1,272 @@
-
-
-.container-sun{
-  text-align:center;
-}
-/* the svg element */
-.svg-sun{
-  width:300px;
-  height:50px;
-
-  -webkit-transform-origin: center center;
-  -moz-transform-origin: 50% 50%;
-  -o-transform-origin: center center;
-  -ms-transform-origin: center center;
-  transform-origin:50% 50%;
-
-  -webkit-animation: spin 25s linear infinite, sun-glow 3s 0s linear infinite;
-  -moz-animation: spin 25s linear infinite, sun-glow 3s 0s linear infinite;
-  -o-animation:spin 25s linear infinite, sun-glow 3s 0s linear infinite;
-  -ms-animation: spin 25s linear infinite, sun-glow 3s 0s ease-in-out infinite;
-  animation: spin 25s linear infinite,sun-glow 3s 0s linear infinite;
-
-}
-/* the circle element in the svg itself */
-#sun{
-  stroke-width:18;
-  stroke-dasharray:2;
-  stroke-dashoffset:2;
-}
-/* animation for the sun glowing effect */
-@-webkit-keyframes sun-glow {
-  0% { fill: #f1c40f; stroke:#f1c40f;}
-  50% { fill: #e67e22; stroke:#e67e22;}
-  100% { fill: #f1c40f; stroke:#f1c40f;}
-}
-@-moz-keyframes sun-glow {
-  0% { fill: #f1c40f; stroke:#f1c40f;}
-  50% { fill: #e67e22; stroke:#e67e22;}
-  100% { fill: #f1c40f; stroke:#f1c40f;}
-}
-@-o-keyframes sun-glow {
-  0% { fill: #f1c40f; stroke:#f1c40f;}
-  50% { fill: #e67e22; stroke:#e67e22;}
-  100% { fill: #f1c40f; stroke:#f1c40f;}
-}
-@-ms-keyframes sun-glow {
-  0% { fill: #f1c40f; stroke:#f1c40f;}
-  50% { fill: #e67e22; stroke:#e67e22;}
-  100% { fill: #f1c40f; stroke:#f1c40f;}
-}
-@keyframes sun-glow {
-  0% { fill: #f1c40f; stroke:#f1c40f;}
-  50% { fill: #e67e22; stroke:#e67e22;}
-  100% { fill: #f1c40f; stroke:#f1c40f;}
+html {
+  box-sizing: border-box;
 }
 
-/* start spin animation */
-@-webkit-keyframes spin{
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  animation: skyChange 60s linear infinite;
+  background: deepskyblue;
+}
+
+/* Container - Sky*/
+#sky {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Standard syntax */
+@keyframes skyChange {
+  0% {
+    background: deepskyblue;
+  }
+  25% {
+    background: deepskyblue;
+  }
+  32% {
+    background: aliceblue;
+  }
+  41% {
+    background: deepskyblue;
+  }
+  70% {
+    background: deepskyblue;
+  }
   100% {
-    -webkit-transform: rotate(360deg);
+    background: #00d2ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+                    to right,
+                    #3a7bd5,
+                    #00d2ff
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+                    to right,
+                    #3a7bd5,
+                    #00d2ff
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 }
-@-moz-keyframes spin{
-  100% {
-    -moz-transform: rotate(360deg);
+
+/* Sun  */
+.theSun {
+  opacity: 1;
+  box-shadow: 0px 0px 15px 3px yellow;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 15vh;
+  left: 30vw;
+  animation: sunpulse 2s alternate infinite;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, #ffd200 95%, #f7971e);
+}
+
+@keyframes sunpulse {
+  from {
+    box-shadow: 0 0 100px #ff0, 0 0 100px #ff0;
+  }
+  to {
+    box-shadow: 0 0 25px #ff0, 0 0 75px #ff0;
   }
 }
-@-o-keyframes spin{
+
+/* Clouds */
+
+.cloudwrapperOne,
+.cloudwrapperTwo,
+.cloudwrapperThree {
+  animation: movecloudsoversky 60s linear infinite;
+  animation-delay: -1s;
+  z-index: 2001;
+}
+
+.cloudwrapperTwo {
+  animation-delay: -1s;
+}
+
+.cloudwrapperThree {
+  animation-delay: -2s;
+}
+
+.cloud {
+  width: 200px;
+  height: 60px;
+  background: white;
+  position: relative;
+  border-radius: 200px;
+  z-index: 2000;
+}
+
+.cloud:before,
+.cloud:after {
+  content: "";
+  background: white;
+  position: absolute;
+  width: 100px;
+  height: 80px;
+  top: -15px;
+  left: 10px;
+  border-radius: 100px;
+  transform: rotate(30deg);
+}
+
+.cloud:after {
+  width: 120px;
+  height: 120px;
+  top: -55px;
+  left: auto;
+  right: 15px;
+}
+
+.c1 {
+  margin-top: -20px;
+  animation-delay: -2s;
+}
+
+.c2 {
+  margin-top: 10px;
+  animation-delay: -18s;
+}
+
+.c3 {
+  margin-top: 5px;
+  animation-delay: -7s;
+}
+
+@keyframes movecloudsoversky {
+  0% {
+    transform: translate(-25%, 10vh);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.8;
+  }
   100% {
-    -o-transform: rotate(360deg);
+    transform: translate(125%, 10vh);
+    opacity: 0.4;
   }
 }
-@-ms-keyframes spin{
-  100% {
-    -ms-transform: rotate(360deg);
-  }
+
+/* Sun rays */
+
+.ray_box {
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 70px;
+  animation: ray_anim 120s linear infinite;
 }
-@keyframes spin{
+
+.ray {
+  background: -webkit-linear-gradient(
+                  top,
+                  rgba(255, 255, 255, 0) 0%,
+                  rgba(255, 255, 255, 0.8) 50%,
+                  rgba(255, 255, 255, 0) 100%
+  );
+  background: linear-gradient(
+                  top,
+                  rgba(255, 255, 255, 0) 0%,
+                  rgba(255, 255, 255, 0.8) 50%,
+                  rgba(255, 255, 255, 0) 100%
+  );
+  margin-left: 10px;
+  border-radius: 80% 80% 0 0;
+  position: absolute;
+  opacity: 0.1;
+}
+
+.ray1 {
+  height: 170px;
+  width: 30px;
+  transform: rotate(180deg);
+  top: -175px;
+  left: 15px;
+}
+
+.ray2 {
+  height: 100px;
+  width: 8px;
+  transform: rotate(220deg);
+  top: -90px;
+  left: 75px;
+}
+
+.ray3 {
+  height: 170px;
+  width: 50px;
+  transform: rotate(250deg);
+  top: -80px;
+  left: 100px;
+}
+
+.ray4 {
+  height: 120px;
+  width: 14px;
+  transform: rotate(305deg);
+  top: 30px;
+  left: 100px;
+}
+
+.ray5 {
+  height: 140px;
+  width: 30px;
+  transform: rotate(-15deg);
+  top: 60px;
+  left: 40px;
+}
+
+.ray6 {
+  height: 90px;
+  width: 50px;
+  transform: rotate(30deg);
+  top: 60px;
+  left: -40px;
+}
+
+.ray7 {
+  height: 180px;
+  width: 10px;
+  transform: rotate(70deg);
+  top: -35px;
+  left: -40px;
+}
+
+.ray8 {
+  height: 120px;
+  width: 30px;
+  transform: rotate(100deg);
+  top: -45px;
+  left: -90px;
+}
+
+.ray9 {
+  height: 80px;
+  width: 10px;
+  transform: rotate(120deg);
+  top: -65px;
+  left: -60px;
+}
+
+.ray10 {
+  height: 190px;
+  width: 23px;
+  transform: rotate(150deg);
+  top: -185px;
+  left: -60px;
+}
+
+@keyframes ray_anim {
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
     transform: rotate(360deg);
   }
