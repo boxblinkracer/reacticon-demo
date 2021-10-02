@@ -8,5 +8,8 @@ return PhpCsFixer\Config::create()
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
-            ->exclude([])
+            ->exclude([
+                'Resources/app/storefront/node_modules',
+                'vendor',
+            ])
             ->in(__DIR__ . '/src'));
