@@ -1,8 +1,10 @@
 import Devices from "Services/utils/Devices";
 import Session from "Services/utils/Session"
 import RegisterAction from "Actions/storefront/account/RegisterAction";
-import AdminAPIClient from "../../support/services/shopware/AdminAPIClient";
+import PluginConfig from "Actions/shopware/PluginConfig";
 
+
+const pluginConfig = new PluginConfig();
 
 const devices = new Devices();
 const session = new Session();
@@ -20,6 +22,9 @@ context("Captcha Register Form", () => {
 
 
     it('Registration works with Captcha', () => {
+
+        pluginConfig.setMinScore(0.5);
+
         cy.visit('/account/login');
         cy.wait(1000);
 
@@ -29,6 +34,8 @@ context("Captcha Register Form", () => {
     })
 
     it('Error on invalid captcha', () => {
+
+        pluginConfig.setMinScore(0.5);
 
         cy.visit('/account/login');
 
@@ -48,16 +55,8 @@ context("Captcha Register Form", () => {
 
     it('Error on invalid score', () => {
 
-        const apiClient = new AdminAPIClient();
-        const data = {
-            "null": {
-                "GoogleRecaptchaPlugin.config.registerMinScore": 1.0,
-            }
-        };
-        apiClient.post('/_action/system-config/batch', data);
+        pluginConfig.setMinScore(1.0);
 
-        cy.wait(1000);
-        
         cy.visit('/account/login');
 
         cy.wait(1000);

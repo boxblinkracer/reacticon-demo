@@ -3,6 +3,7 @@ parameters:
     paths:
         - ./src
     excludes_analyse:
+        - ./build-animation.php
         - ./src/Resources/*
         - ./node_modules/*
         - ./vendor/*
