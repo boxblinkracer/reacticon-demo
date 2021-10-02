@@ -21,6 +21,16 @@ context("Captcha Register Form", () => {
     });
 
 
+    it('Captcha Token is filled', () => {
+
+        pluginConfig.setMinScore(0.5);
+
+        cy.visit('/account/login');
+        cy.wait(1000);
+
+        cy.get('.captcha-form-token').should('not.have.value', '')
+    })
+
     it('Registration works with Captcha', () => {
 
         pluginConfig.setMinScore(0.5);
