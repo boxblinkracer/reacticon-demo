@@ -9,8 +9,11 @@ $rainImport = "@import 'animations/rain.scss'";
 
 $weather = getWeather('Holzkirchen,Bavaria', $apiKey);
 $data = json_decode($weather, true);
-$condition = $data['weather'][0]['main'];
+$condition = (string)$data['weather'][0]['main'];
 
+if (empty($condition)) {
+    return;
+}
 
 $isRainy = (strtolower($condition) === 'rain');
 $isSunny = !$isRainy;
