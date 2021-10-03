@@ -7,14 +7,13 @@ $sunImport = "@import 'animations/sun.scss'";
 $rainImport = "@import 'animations/rain.scss'";
 
 
-$isRainy = true;
-$isSunny = false;
-
-
 $weather = getWeather('Holzkirchen,Bavaria', $apiKey);
+$data = json_decode($weather, true);
+$condition = $data['weather'][0]['main'];
 
 
-
+$isRainy = (strtolower($condition) === 'rain');
+$isSunny = !$isRainy;
 
 $baseScssContent = file_get_contents($fileBaseScss);
 
@@ -30,8 +29,6 @@ if (!$isSunny) {
 }
 
 file_put_contents($fileBaseScss, $baseScssContent);
-
-
 
 
 /**
