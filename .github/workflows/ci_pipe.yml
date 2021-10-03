@@ -208,6 +208,8 @@ jobs:
           docker exec shop bash -c 'php bin/console plugin:refresh'
           docker exec shop bash -c 'php bin/console plugin:deactivate DemoPlugin'
           docker exec shop bash -c 'php bin/console plugin:activate DemoPlugin'
+          docker exec shop bash -c 'php bin/console system:config:set GoogleRecaptchaPlugin.config.siteKey ${{ secrets.RECAPTCHA_SITEKEY }}'
+          docker exec shop bash -c 'php bin/console system:config:set GoogleRecaptchaPlugin.config.secretKey ${{ secrets.RECAPTCHA_SECRET }}'
           docker exec shop bash -c 'php bin/console cache:clear'
 
       - name: Install Cypress
