@@ -194,20 +194,17 @@ jobs:
           docker cp $(pwd)/. shop:/var/www/html/custom/plugins/GoogleRecaptchaPlugin
           docker exec shop bash -c 'sudo chown www-data:www-data /var/www/html/custom/plugins -R'
 
-      - name: Install Plugin
-        run: |
-          docker exec shop bash -c 'php bin/console plugin:refresh'
-          docker exec shop bash -c 'php bin/console plugin:install DemoPlugin --activate'
-
       - name: Build artifacts
         run: |
+          docker exec shop bash -c 'php bin/console plugin:refresh'
+          docker exec shop bash -c 'php bin/console plugin:install GoogleRecaptchaPlugin --activate'
           docker exec shop bash -c 'cd /var/www/html/custom/plugins/GoogleRecaptchaPlugin && make build -B'
 
       - name: Reinstall Plugin
         run: |
           docker exec shop bash -c 'php bin/console plugin:refresh'
-          docker exec shop bash -c 'php bin/console plugin:deactivate DemoPlugin'
-          docker exec shop bash -c 'php bin/console plugin:activate DemoPlugin'
+          docker exec shop bash -c 'php bin/console plugin:deactivate GoogleRecaptchaPlugin'
+          docker exec shop bash -c 'php bin/console plugin:activate GoogleRecaptchaPlugin'
           docker exec shop bash -c 'php bin/console system:config:set GoogleRecaptchaPlugin.config.siteKey ${{ secrets.RECAPTCHA_SITEKEY }}'
           docker exec shop bash -c 'php bin/console system:config:set GoogleRecaptchaPlugin.config.secretKey ${{ secrets.RECAPTCHA_SECRET }}'
           docker exec shop bash -c 'php bin/console cache:clear'
