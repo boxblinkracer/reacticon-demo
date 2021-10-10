@@ -49,7 +49,7 @@ context("Captcha Register Form", () => {
 
         cy.visit('/account/login');
 
-        cy.wait(1000);
+        cy.wait(2000);
 
         // invalidate token
         cy.get('.captcha-form-token').then(function ($input) {
