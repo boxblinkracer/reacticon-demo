@@ -71,11 +71,6 @@ context("Captcha Register Form", () => {
 
         cy.wait(1000);
 
-        // invalidate token
-        cy.get('.captcha-form-token').then(function ($input) {
-            $input[0].setAttribute('value', 'invalid-token')
-        })
-
         // register
         register.registerRandomAccount();
 
