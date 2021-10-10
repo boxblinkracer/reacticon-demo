@@ -4,8 +4,8 @@
         "stylelint-scss"
     ],
     "ignoreFiles": [
-        './src/scss/animations/rain.scss',
-        './src/scss/animations/sun.scss'
+        "./src/scss/animations/rain.scss",
+        "./src/scss/animations/sun.scss"
     ],
     "rules": {
         "indentation": 4,
