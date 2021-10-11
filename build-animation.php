@@ -22,8 +22,10 @@ $isSunny = !$isRainy;
 
 if ($weatherArg === 'rain') {
     $isRainy = true;
+    $isSunny = false;
 } else if ($weatherArg === 'sun') {
     $isSunny = true;
+    $isRainy = false;
 }
 
 $baseScssContent = file_get_contents($fileBaseScss);
