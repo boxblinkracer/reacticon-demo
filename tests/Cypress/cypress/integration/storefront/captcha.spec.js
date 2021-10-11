@@ -26,7 +26,7 @@ context("Captcha Register Form", () => {
         pluginConfig.setMinScore(0.5);
 
         cy.visit('/account/login');
-        cy.wait(1000);
+        cy.wait(2000);
 
         cy.get('.captcha-form-token').should('not.have.value', '')
     })
@@ -36,7 +36,7 @@ context("Captcha Register Form", () => {
         pluginConfig.setMinScore(0.5);
 
         cy.visit('/account/login');
-        cy.wait(1000);
+        cy.wait(2000);
 
         register.registerRandomAccount();
 
@@ -48,7 +48,6 @@ context("Captcha Register Form", () => {
         pluginConfig.setMinScore(0.5);
 
         cy.visit('/account/login');
-
         cy.wait(2000);
 
         // invalidate token
@@ -68,8 +67,7 @@ context("Captcha Register Form", () => {
         pluginConfig.setMinScore(1.0);
 
         cy.visit('/account/login');
-
-        cy.wait(1000);
+        cy.wait(2000);
 
         // register
         register.registerRandomAccount();
