@@ -67,11 +67,10 @@ class RegisterRoute extends AbstractRegisterRoute
      */
     public function register(RequestDataBag $data, SalesChannelContext $context, bool $validateStorefrontUrl = true, ?DataValidationDefinition $additionalValidationDefinitions = null): CustomerResponse
     {
-        $action = $data->get('captcha_action');
         $token = $data->get('captcha_token');
 
 
-        if (!$this->captcha->verifyToken($action, $token)) {
+        if (!$this->captcha->verifyToken(self::CAPTCHA_ACTION, $token)) {
             $this->throwError('Captcha validation failed! Are you a bot?', $data->all());
         }
 

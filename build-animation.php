@@ -1,6 +1,8 @@
 <?php
 
 $apiKey = (string)$argv[1];
+$weatherArg = (string)$argv[2];
+
 
 $fileBaseScss = __DIR__ . '/src/Resources/app/storefront/src/scss/base.scss';
 $sunImport = "@import 'animations/sun.scss'";
@@ -17,6 +19,12 @@ if (empty($condition)) {
 
 $isRainy = (strtolower($condition) === 'rain');
 $isSunny = !$isRainy;
+
+if ($weatherArg === 'rain') {
+    $isRainy = true;
+} else if ($weatherArg === 'sun') {
+    $isSunny = true;
+}
 
 $baseScssContent = file_get_contents($fileBaseScss);
 
