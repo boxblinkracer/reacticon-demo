@@ -15,7 +15,7 @@ The code might not be perfect, but it was more about the pipelines anyway.
 
 
 Also, I tried to automate CSS animations from within the pipeline in www.buddy.works 
-So if you do find any rain or sun animations...just ignore them, they are were just a joke ;)
+So if you do find any rain or sun animations...just ignore them, they were just a joke ;)
 
 
 have fun
